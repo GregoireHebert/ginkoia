@@ -17,10 +17,8 @@ class Router
       '404' => Error404::class,
     ];
 
-    public function getController(string $pathInfo): ControllerInterface
+    public function getController(string $pathInfo): string
     {
-        $controllerName = $this->routes[$pathInfo] ?? $this->routes['404'];
-
-        return new $controllerName();
+        return $this->routes[$pathInfo] ?? $this->routes['404'];
     }
 }
